@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription d'utilisateur</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      
+        
+
+        .btn-primary {
+            padding: 10px 20px;
+    margin-left: 5px; /* Espacement entre les boutons */
+    font-size: 1em; /* Taille de la police ajustée pour l'accessibilité */
+    cursor: pointer; /* Curseur en forme de pointeur pour indiquer l'interactivité */
+    border: none; /* Pas de bordure par défaut */
+    border-radius: 5px; /* Bords arrondis pour un look moderne */
+    background-color: #06BBCC; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Ombre portée pour un effet de profondeur */
+    transition: background-color 0.3s; /* Transition lisse pour l'effet hover */
+        }
+
+        .btn-primary:hover {
+            background-color: #5c6bc0;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Inscription d'utilisateur</h4>
+                    <form id="registrationForm" action="submition.php" method="post">
+                        <div class="form-group">
+                            <label for="utilisateur_id">ID d'utilisateur:</label>
+                            <input type="text" class="form-control" id="utilisateur_id" name="utilisateur_id" required>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="nom">Nom:</label>
+                            <input type="text" class="form-control" id="nom" name="nom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="prenom">Prénom:</label>
+                            <input type="text" class="form-control" id="prenom" name="prenom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Mot de passe:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="role">Rôle:</label>
+                            <select class="form-control" id="role" name="role">
+                                <option value="Etudiant">Étudiant</option>
+                                <option value="Professeur">Professeur</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    var form = this;
+    
+    // Ajoutez des vérifications pour s'assurer que les champs sont correctement remplis
+    if (!form.checkValidity()) {
+        event.preventDefault(); // Empêche l'envoi du formulaire
+        event.stopPropagation();
+        alert("Veuillez remplir tous les champs requis.");
+        form.classList.add('was-validated');
+    }
+    
+    
+});
+
+</script>
+
+<!-- Bootstrap Bundle JS (include Popper.js) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

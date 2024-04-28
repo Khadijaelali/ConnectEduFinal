@@ -1,0 +1,173 @@
+
+        html, body {
+            height: 100%; 
+            margin: 0;
+            padding: 0;
+        }
+        .announcement-section {
+            background: #ffffff;
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .announcement-header {
+            margin-bottom: 20px;
+        }
+        .icon-button {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .icon-button:last-child {
+            margin-right: 0;
+        }
+        .announcement-textarea {
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            resize: none;
+        }
+        .file-input {
+            display: none;
+        }
+        .upload-button {
+            margin-right: 10px;
+        }
+        .announcement-buttons {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .container-fluid {
+            min-height: calc(50vh - 50px); 
+        }
+
+        
+        .sidebar {
+            width: 250px; /* Sidebar width */
+            position: fixed; 
+            top: 0; /* Stay at the top */
+            left: 0;
+            height: 100vh; /* Full-height */
+            padding-top: 100px; /* Place content below the top navigation */
+            background-color: #f8f9fa; /* Sidebar background color */
+        }
+        /* Sidebar links */
+        .sidebar a {
+            padding: 10px 15px; /* Padding for sidebar links */
+            text-decoration: none; /* No underlines on links */
+            font-size: 1.1em; /* Increase font size */
+            color: #333; /* Link color */
+            display: block; /* Make the links appear below each other */
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd; /* Link hover color */
+            border-radius: 5px; /* Rounded corners on hover */
+        }
+        .course-code {
+    font-weight: bold;
+    padding-left: 5px; /* Ajoute un peu d'espace après le titre */
+    font-size: 0.9em; /* Si vous voulez que le code du cours soit un peu plus petit que le titre */
+}       
+
+
+.annonce {
+    background-color: #fff;
+    border-left: 5px solid #007bff; /* Une bordure sur le côté pour un effet visuel */
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.annonce p {
+    margin: 0;
+    color: #333;
+}
+
+.annonce .text-muted {
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+/* Un bouton pour éventuellement cacher les annonces individuelles */
+.annonce .hide-annonce-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #007bff;
+}
+.material-card {
+    margin-bottom: 15px; /* Ajoutez de l'espace en bas de chaque carte pour la séparer de la suivante */
+}
+.comment-form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .comment-content {
+        width: 100%;
+        margin-right: 10px; /* Espace entre le textarea et le bouton */
+    }
+    .comment {
+        border: 1px solid #dedede;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        background-color: #f8f8f8;
+    }
+    .comment p {
+        margin: 0;
+        padding: 3px 0;
+    }
+    .comment .comment-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #e9e9e9;
+        padding: 5px 10px;
+        border-radius: 5px 5px 0 0;
+        border-bottom: 1px solid #dedede;
+    }
+    .comment .comment-info .text-muted {
+        margin-left: 10px;
+    }
+    
+
+
+
+       
+        
+
+       
+       
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {top:-300px; opacity:0} 
+            to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        margin-top: 20%; /* Adjust for smaller screens */
+        margin-bottom: 20%;
+    }
+}
+
+
+   

